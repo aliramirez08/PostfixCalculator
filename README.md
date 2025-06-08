@@ -22,7 +22,7 @@ It evaluates postfix (Reverse Polish Notation) arithmetic expressions using a st
 
 ## How to Compile and Run
 
-###  Open terminal and navigate to the project directory:
+### Open terminal and navigate to the project directory
 
 ```bash
 cd PostfixCalculatorProject
