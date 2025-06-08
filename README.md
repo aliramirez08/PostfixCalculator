@@ -26,3 +26,23 @@ It evaluates postfix (Reverse Polish Notation) arithmetic expressions using a st
 
 ```bash
 cd PostfixCalculatorProject
+```
+# Postfix Calculator (Java)
+
+[... your current README content ...]
+
+---
+
+##  Screenshots
+
+### Program Start
+![Program Start](Screenshots/PostfixCalculator1.png)
+
+### Program Running
+![Program Running](Screenshots/PostfixCalculator2.png)
+
+### Output Example
+![Output](Screenshots/output.png)
+
+### Expression Input Example
+![Expression Input](Screenshots/Expression.png)
