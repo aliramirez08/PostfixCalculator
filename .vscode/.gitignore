@@ -1,0 +1,8 @@
+# Ignore compiled class files
+*.class
+
+# Ignore any OS-specific files
+.DS_Store
+
+# Ignore VS Code specific files
+.vscode/
