@@ -33,7 +33,7 @@ Evaluates to: 14.0000
 
 ---
 
-## ▶️ How to Run
+## ▶ How to Run
 
 Compile and run the program from the terminal:
 
@@ -41,6 +41,7 @@ Compile and run the program from the terminal:
 javac PostfixCalculator.java
 java PostfixCalculator
 ```
+
 Postfix Calculator (Supports floating-point numbers)
 Enter a postfix expression or type 'exit' to quit.
 
