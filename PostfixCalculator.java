@@ -1,81 +1,86 @@
-import java.util.*;
+import java.util.Scanner;
+import java.util.Stack;
 
 public class PostfixCalculator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Postfix Calculator (Supports floating-point numbers)");
+        System.out.println("Enter a postfix expression or type 'exit' to quit.");
 
-    public int evaluatePostfix(String postfixExpression) {
-        Stack<Integer> stack = new Stack<>();
-        String[] tokens = postfixExpression.trim().split("\\s+");
+        while (true) {
+            System.out.print("\nExpression: ");
+            String input = scanner.nextLine();
+
+            if (input.equalsIgnoreCase("exit")) {
+                System.out.println("Calculator terminated.");
+                break;
+            }
+
+            try {
+                double result = evaluatePostfix(input);
+                System.out.printf("Result: %.4f%n", result);
+            } catch (Exception e) {
+                System.out.println("Error: " + e.getMessage());
+            }
+        }
+
+        scanner.close();
+    }
+
+    public static double evaluatePostfix(String expression) {
+        Stack<Double> stack = new Stack<>();
+        String[] tokens = expression.trim().split("\\s+");
 
         for (String token : tokens) {
             if (isNumeric(token)) {
-                stack.push(Integer.parseInt(token));
+                stack.push(Double.parseDouble(token));
             } else if (isOperator(token)) {
                 if (stack.size() < 2) {
-                    throw new IllegalArgumentException("Error: Not enough operands for operator '" + token + "'");
+                    throw new IllegalArgumentException("Insufficient operands for operation: " + token);
                 }
-                int b = stack.pop();
-                int a = stack.pop();
-                int result = applyOperation(a, b, token);
+                double b = stack.pop();
+                double a = stack.pop();
+                double result = applyOperation(token, a, b);
                 stack.push(result);
             } else {
-                throw new IllegalArgumentException("Error: Invalid token '" + token + "'");
+                throw new IllegalArgumentException("Invalid token: " + token);
             }
         }
 
         if (stack.size() != 1) {
-            throw new IllegalArgumentException("Error: Invalid postfix expression (too many operands)");
+            throw new IllegalArgumentException("Malformed expression. Stack has " + stack.size() + " values.");
         }
 
         return stack.pop();
     }
 
-    private boolean isNumeric(String token) {
-        return token.matches("-?\\d+");
+    public static boolean isNumeric(String token) {
+        try {
+            Double.parseDouble(token);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 
-    private boolean isOperator(String token) {
-        return "+-*/%".contains(token);
+    public static boolean isOperator(String token) {
+        return token.equals("+") || token.equals("-") || token.equals("*") ||
+               token.equals("/") || token.equals("%");
     }
 
-    private int applyOperation(int a, int b, String op) {
-        switch (op) {
+    public static double applyOperation(String operator, double a, double b) {
+        switch (operator) {
             case "+": return a + b;
             case "-": return a - b;
             case "*": return a * b;
             case "/":
-                if (b == 0) throw new ArithmeticException("Error: Division by zero");
+                if (b == 0) throw new ArithmeticException("Division by zero.");
                 return a / b;
             case "%":
-                if (b == 0) throw new ArithmeticException("Error: Modulo by zero");
+                if (b == 0) throw new ArithmeticException("Modulo by zero.");
                 return a % b;
-            default: throw new IllegalArgumentException("Error: Unknown operator");
+            default:
+                throw new IllegalArgumentException("Unknown operator: " + operator);
         }
-    }
-
-    public static void main(String[] args) {
-        PostfixCalculator calculator = new PostfixCalculator();
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("Welcome to the Postfix Calculator!");
-        System.out.println("Enter your postfix expression with space-separated tokens.");
-        System.out.println("Type 'exit' to quit.");
-
-        while (true) {
-            System.out.print("Enter expression: ");
-            String input = scanner.nextLine().trim();
-
-            if (input.equalsIgnoreCase("exit")) {
-                System.out.println("Goodbye!");
-                break;
-            }
-
-            try {
-                int result = calculator.evaluatePostfix(input);
-                System.out.println("Result: " + result);
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-            }
-        }
-        scanner.close();
     }
 }
