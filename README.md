@@ -1,51 +1,56 @@
-# Postfix Calculator (Java)
+# Java Postfix Calculator
 
-This is a simple command-line **Postfix Calculator** written in Java.  
-It evaluates postfix (Reverse Polish Notation) arithmetic expressions using a stack.
+This project implements an interactive **Postfix (Reverse Polish Notation) Calculator** in Java using a **stack-based evaluation strategy**. It supports both integer and **floating-point numbers**, allowing users to input mathematical expressions in postfix format and receive immediate results.
 
 ---
 
 ## Features
 
-- Supports:
-  - Addition (`+`)
-  - Subtraction (`-`)
-  - Multiplication (`*`)
-  - Division (`/`)
-  - Modulo (`%`)
-- Supports multi-digit integers (both positive and negative).
-- Handles invalid expressions with helpful error messages.
-- Prevents division by zero.
-- Interactive: allows users to input multiple expressions until they type `exit`.
+- Accepts multi-token postfix expressions (e.g., `3.5 1.2 +`)
+- Supports **floating-point arithmetic**
+- Supported operators: `+`, `-`, `*`, `/`, `%`
+- Detects and reports:
+  - Invalid tokens
+  - Insufficient operands
+  - Division/modulo by zero
+  - Malformed expressions
+- Allows continuous interactive input (`exit` to quit)
 
 ---
 
-## How to Compile and Run
+## How It Works
 
-### Open terminal and navigate to the project directory
+Postfix expressions are evaluated using a stack:
+
+1. Numbers are pushed onto the stack.
+2. When an operator is encountered, two operands are popped.
+3. The operation is applied and the result is pushed back.
+4. At the end, the stack should contain exactly one result.
+
+Example:
+Input: 5 1 2 + 4 * + 3 -
+Evaluates to: 14.000
+
+---
+
+## ▶ How to Run
+
+Compile and run the program from the terminal:
 
 ```bash
-cd PostfixCalculatorProject
+javac PostfixCalculator.java
+java PostfixCalculator
 ```
 
-[... your current README content ...]
+Then enter a postfix expression when prompted:
+Postfix Calculator (Supports floating-point numbers)
+Enter a postfix expression or type 'exit' to quit.
 
----
+Expression: 3.5 1.5 +
+Result: 5.0000
 
-## Screenshots
+Expression: 10 2 /
+Result: 5.0000
 
-### Program Start
-
-![Program Start](Screenshots/PostfixCalculator1.png)
-
-### Program Running
-
-![Program Running](Screenshots/PostfixCalculator2.png)
-
-### Output Example
-
-![Output](Screenshots/output.png)
-
-### Expression Input Example
-
-![Expression Input](Screenshots/Expression.png)
+Expression: exit
+Calculator terminated.
