@@ -29,11 +29,11 @@ Postfix expressions are evaluated using a stack:
 
 Example:
 Input: 5 1 2 + 4 * + 3 -
-Evaluates to: 14.000
+Evaluates to: 14.0000
 
 ---
 
-## ▶ How to Run
+## ▶️ How to Run
 
 Compile and run the program from the terminal:
 
@@ -41,8 +41,6 @@ Compile and run the program from the terminal:
 javac PostfixCalculator.java
 java PostfixCalculator
 ```
-
-Then enter a postfix expression when prompted:
 Postfix Calculator (Supports floating-point numbers)
 Enter a postfix expression or type 'exit' to quit.
 
