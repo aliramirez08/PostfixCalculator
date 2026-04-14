@@ -50,6 +50,7 @@ javac PostfixCalculator.java
 java PostfixCalculator
 ```
 ## Example Output
+
 Postfix Calculator (Supports floating-point numbers)
 Enter a postfix expression or type 'exit' to quit.
 Expression: 3.5 1.5 +
@@ -61,7 +62,6 @@ Calculator terminated.
 
 ## Future Improvements
 
-## Future Improvements
 - Add graphical user interface (GUI)
 - Support additional mathematical functions
 - Improve expression validation and error messaging
