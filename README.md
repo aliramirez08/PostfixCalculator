@@ -35,14 +35,10 @@ At completion, the stack contains a single result.
 ## Example
 
 Input:
-
-```5 1 2 + 4 * + 3 -
-```
+5 1 2 + 4 * + 3 -
 
 Output:
-
-```14.0000
-```
+14.0000
 
 ## How to Run
 
